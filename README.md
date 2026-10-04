@@ -1,32 +1,59 @@
-# phpForLoop Example
+# Week 4 Lab - Build a GPA Calculator
+The goals of this weeks lab are
+- To process some simple information gathered from the user using Javascript
+- To perform simple calculations in Javascript and report the result tot the user
+- To use CSS to improve the appears of the app and the user's experince
+- To use flexbox to so that app will have a responsive design and work well on different screen sizes
 
-Clone this repo into your documents folder on the C Drive (e.g c:\users\A0001234\documents). Get your repo url from github after creating the repo.
-Type
-**_git clone your-repo-url_**
-In the command prompt **_cd_** into the cloned folder e.g. **_cd sswdWeek3Lab-aparna-tudublin _**
-
-Then **_cd_** into the folder you have just cloned by typing
-
-**_cd labWeek3-yourgithubid_**.
-
-Once you are in the correct folder keep this command window open so you can type in your git commands as required.
-Open another command window and cd into the same folder c:\users\b0001234\documents\labWeek3-yourgithubid\*\*\*
-Start the webserver listening on port 8000 in that window using the following command
-
-**_PHP -S localhost:8000 -t ./_**
-
-Leave that window with the webserver running - listening for new web requests
+A students GPA on any given semester is calculated by dividing their accumulated total grade score by the total number
+off possible credits they could have earned. The grade score for any given module is calculated by multipling the gradepoints 
+for the grade achieved by the credits available for the module. If there are two modules SSWD and OB and the student gets an A 
+in SSWD and a B in OB then the total grade score is 4.0x5 (20) + 3.0x5 (15) giving a total of 35. The GPA is calculated as 35/10 
+as there were only 10 possible credits. So the GPA will be 3.5.
 
 # Part 1
-
-Modify the code in phpForLoop.php so that it counts up to 20. Test your code by visiting http://localhost:8000/phpForLoop.php (remember that to test your code the webserver must be running under the laragon app). Once it works - commit and push your changes by typing **_git commit -am "put a good msg here"_** and then **_git push origin main_**
+Take the starter code from App.js in the repo and make it work so that when the button is clicked, the message 
+"this is the click me button" appears. Then translate the commented lines of code in the clickMe function into working Javascript
+so that when the button is clicked the App will calculate the GPA for the student and output it to the screen using an alert.
+You only need to add three lines of code to complete part 1.
 
 # Part 2
+Add the StyleSheet component to the list of components being imported at the top. Add the following block of code to your program.
+Add it inside the App function but before the return statement.
+```
+const styles = StyleSheet.create({
+  container: {
 
-Create a new PHP file called loopInFives.php in your cloned labWeek3 folder. Use the code from Part 1 but this time modify the loop so that after every count of five the program puts out a line break. This will mean that each group of five will be on it's own line.
-**Hint** Put an if statement into your loop that checks to see if the contents of the variable which contains your loop counter ($i) can be divided evenly by 5. i.e. the remainder (modulus) when you divide by 5 is zero. If this condition is true, put out a HTML line break to the screen. A line break in HTML can be achieved using the <BR> tag. To put something out to the screen in php you must use the echo command.
-Test your code by visiting http://localhost:8000/loopInFives.php. When your code is working add your new file by typing **_git add ._** at the command prompt. Then commit your changes by typing **_git commit -am "put a commit msg here"_**. Finally push your changes by typing **_git push origin main_**.
+  },
+  row: {
+
+  },
+  label: {
+
+  },
+  textInput: {
+
+  }
+});
+```
+To add these three styles to the relevant components - the outer view should get the style 'container'. Each of the inner views should
+get the style 'row'. The labels and textInputs should get the other two appropriate styles. Hint - to add a style to a component add
+```
+style={styles.mystyle}
+```
+as a prop inside the tag of the component.
+
+Now modify the respective styles inside the CSS tag so that the App looks better. Each row should get a flexDirection of 'row' so that 
+the elements will appear alongside each other. This will allow us to fit more rows on the screen and thereby do a GPA calculation for a
+full semesters worth of modules. To improve the look of the other elements add marginLeft, marginRight, and padding settings.
+When adding these settings always use a percentage e.g. marginLeft: "5%". This will ensure the App is responsive and will render well
+on any screen size.
 
 # Part 3
+Add additional useState variables for MobileApps, Digital Marketing, OOAD, and Financial Management - use appropriate names for the variables.
+Copy and paste the two existing rowsto add additional rows for these modules, modify the code in each one so that the correct setState function is called when the text changes. Add additonal lines of code to the clickMe function so that the GPA will be calculated on the basis of 6 modules as opposed to two.
+You will also have to change the Total Possible Credits to 30.
 
-Create another new PHP file called nestedForLoop.php. In this file create a nested for loop which draws a fifteen by twenty HTML table. i.e. There should be fifteen rows and twenty columns. The outer loop should use the variable $i as a counter(for the rows). The inner loop should use the variable $j as counter(for the columns). The inner loop should draw table cells by echoing <td>$i,$j</td>.
+
+
+
